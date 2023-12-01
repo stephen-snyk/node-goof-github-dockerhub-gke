@@ -1,0 +1,13 @@
+# First deploy the DB
+
+kubectl apply -f ./goof-mongo-deployment.yaml,goof-mongo-service.yaml
+
+# Get the IPs of the DB
+
+kubectl get pods -n node-goof-github-dockerhub-gke -o wide
+
+# Update the hostAliases at the bottom of goof-deploy.yml with the IP of the DB
+#
+# Then deploy the app server and services.
+
+kubectl apply -f ./goof-deployment.yaml,goof-service.yaml

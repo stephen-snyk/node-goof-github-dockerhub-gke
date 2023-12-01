@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    app: node-goof-github-dockerhub-gke
+    io.kompose.service: node-goof-github-dockerhub-gke
+  name: node-goof-github-dockerhub-gke
+  namespace: node-goof-github-dockerhub-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-goof-github-dockerhub-gke
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: node-goof-github-dockerhub-gke
+        io.kompose.service: node-goof-github-dockerhub-gke
+    spec:
+      containers:
+        - env:
+            - name: DOCKER
+              value: "1"
+          image: freshdemo/node-goof-github-dockerhub-gke:gha@sha256:8941c76ce8908b6e1ed04ef58ac5f7981875d7ed7b45730bbbfdbc73f5208410
+          name: node-goof-github-dockerhub-gke
+#          ports:
+#            - containerPort: 3001
+#              hostPort: 3001
+#              protocol: TCP           
+#            - containerPort: 9229
+#              hostPort: 9229
+#              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+      hostAliases:
+      - ip: "10.124.2.48"
+        hostnames:
+        - "goof-mongo"  
+status: {}
