@@ -28,17 +28,10 @@ spec:
               value: "1"
           image: freshdemo/node-goof-github-dockerhub-gke:gha@sha256:8941c76ce8908b6e1ed04ef58ac5f7981875d7ed7b45730bbbfdbc73f5208410
           name: node-goof-github-dockerhub-gke
-#          ports:
-#            - containerPort: 3001
-#              hostPort: 3001
-#              protocol: TCP           
-#            - containerPort: 9229
-#              hostPort: 9229
-#              protocol: TCP
           resources: {}
       restartPolicy: Always
       hostAliases:
-      - ip: "10.124.0.45"
+      - ip: "10.124.2.54"
         hostnames:
         - "goof-mongo"  
 status: {}

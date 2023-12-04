@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: goof-mongo
-  name: goof-mongo
+    app: node-goof-mongo-github-dockerhub-gke
+  name: node-goof-mongo-github-dockerhub-gke
   namespace: node-goof-github-dockerhub-gke
 spec:
   type: LoadBalancer
@@ -12,6 +12,4 @@ spec:
       port: 27017
       targetPort: 27017
   selector:
-    app: goof-mongo
-#status:
-#  loadBalancer: {}
+    app: node-goof-mongo-github-dockerhub-gke
