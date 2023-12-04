@@ -6,15 +6,15 @@ metadata:
     kompose.version: 1.31.2 (HEAD)
   creationTimestamp: null
   labels:
-    app: goof-mongo
-    io.kompose.service: goof-mongo
-  name: goof-mongo
+    app: goof-mysql
+    io.kompose.service: goof-mysql
+  name: goof-mysql
   namespace: node-goof-github-dockerhub-gke
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: goof-mongo
+      app: goof-mysql
   strategy: {}
   template:
     metadata:
@@ -23,27 +23,31 @@ spec:
         kompose.version: 1.31.2 (HEAD)
       creationTimestamp: null
       labels:
-        app: goof-mongo
+        app: goof-mysql
         io.kompose.network/node-goof-github-dockerhub-gke-default: "true"
-        io.kompose.service: goof-mongo
+        io.kompose.service: goof-mysql
     spec:
       containers:
         - env:
             - name: DOCKER
               value: "1"
-          image: mongo:3
-          name: goof-mongo
+            - name:  MYSQL_ROOT_PASSWORD
+              value: "root"
+            - name: MYSQL_DATABASE
+              value: "acme"
+          image: mysql:5
+          name: goof-mysql
           ports:
-            - containerPort: 27017
-              hostPort: 27017
+            - containerPort: 3306
+              hostPort: 3306
               protocol: TCP
           resources: {}
       restartPolicy: Always
 #      hostAliases:
 #      - ip: "127.0.0.1"
 #        hostnames:
-#        - "goof-mongo"
+#        - "goof-mysql"
 #      - ip: "10.124.0.14"
 #        hostnames:
-#        - "goof-mongo"       
+#        - "goof-mysql"       
 status: {}

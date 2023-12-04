@@ -38,7 +38,7 @@ spec:
           resources: {}
       restartPolicy: Always
       hostAliases:
-      - ip: "10.124.2.48"
+      - ip: "10.124.0.45"
         hostnames:
         - "goof-mongo"  
 status: {}
