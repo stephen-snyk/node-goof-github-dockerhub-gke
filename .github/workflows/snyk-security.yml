@@ -66,5 +66,5 @@ jobs:
      
       - name: Snyk Container # Rename your image, for testing and failing please add snyk container test before snyk container monitor
         run: |
-	  snyk container monitor --file=Dockerfile freshdemo/node-goof-github-dockerhub-gke:amd --project-tags="component=pkg:node-goof-github-dockerhub-gke@main" --org=c1264833-b9f1-4698-a425-10f1d402a3d9 || true
+         snyk container monitor --file=Dockerfile freshdemo/node-goof-github-dockerhub-gke:amd --project-tags="component=pkg:node-goof-github-dockerhub-gke@main" --org=c1264833-b9f1-4698-a425-10f1d402a3d9 || true
           #snyk container test freshdemo/node-goof-github-dockerhub-gke:gha --file=Dockerfile ||true
